@@ -11,7 +11,15 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        let test = WordsClass()
+        
+        view.backgroundColor = .red
+        
+        for _ in 1...5 {
+            print(test.getRandomWord(.one, .fiveLetters, .five))
+        }
+        
+        print("Hello!")
     }
 
 
