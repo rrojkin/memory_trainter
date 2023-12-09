@@ -16,7 +16,7 @@ class GamePlay {
     private var counter = 0
     private var generatedText = [String]()
     
-    private var shouldChange = true
+    var shouldChange = true
     
     var dipshit: (() -> ())?
     
@@ -30,7 +30,6 @@ class GamePlay {
     
     func checkWord() {
         if !shouldChange { return }
-        shouldChange.toggle()
         if checkCorrectness(generatedText) {
             counter += 1
         } else {
@@ -45,16 +44,13 @@ class GamePlay {
         if counter == 3 {
             counter = 0
             print("lvlup")
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-                self.goToNextLevel()
-                self.shouldChange.toggle()
-            })
+            self.goToNextLevel()
+
+           
         } else {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-                self.generateText(self.currentLevel)
-                self.shouldChange.toggle()
-            })
+            self.generateText(self.currentLevel)
+
+           
         }
         
         print(currentLevel)
@@ -138,7 +134,7 @@ class GamePlay {
     
     func checkMultipleWordsForCorrecntess(_ doesOrderMatter: Bool, _ wordsShouldBeInverted: Bool = false) -> Bool {
         let split = userInput.split(separator: " ")
-        var stringSplit = split.map({$0.uppercased()})
+        let stringSplit = split.map({$0.uppercased()})
         generatedText = generatedText.map({$0.uppercased()})
         if stringSplit.count == 0 { return false }
         
