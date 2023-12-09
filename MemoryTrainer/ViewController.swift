@@ -12,23 +12,21 @@ class ViewController: UIViewController {
     
     var textBox: UILabel = {
         let text = UILabel()
-        text.textColor = .black
+        text.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        text.textColor = UIColor(named: "DarkShadowText")
         text.textAlignment = .center
-        text.backgroundColor = .white
-        text.font = UIFont.systemFont(ofSize: 16)
+        text.backgroundColor = .clear
         text.numberOfLines = 0
         text.text = "AAAAAAAA"
         text.isHidden = true
         return text
     }()
     
-    lazy var button: UIButton = {
-        let button = UIButton()
+    lazy var button: NeumButton = {
+        let button = NeumButton(corner: 15)
         button.setTitle("Next", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.layer.cornerRadius = 15
-        button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.gray.cgColor
+        button.setTitleColor(UIColor(named: "DarkShadowText"), for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         button.addTarget(self, action: #selector(buttonTapped(sender:)), for: .touchUpInside)
         return button
     }()
@@ -37,23 +35,25 @@ class ViewController: UIViewController {
         let field = UITextField()
         field.placeholder = "Here"
         field.autocorrectionType = .no
-        field.borderStyle = .roundedRect
         field.isUserInteractionEnabled = false
+        field.backgroundColor = .clear
         return field
     }()
     
-    var containerView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        view.layer.cornerRadius = 15
-        view.layer.borderWidth = 1
-        view.layer.borderColor = UIColor.gray.cgColor
+    var textFieldView: NeumInnterView = {
+        let view = NeumInnterView(corner: 5)
+        return view
+    }()
+    
+    var containerView: NeumView = {
+        let view = NeumView(corner: 15)
         return view
     }()
     
     var levelText: UILabel = {
         let text = UILabel()
-        text.textColor = .black
+        text.textColor = UIColor(named: "DarkShadowText")
+        text.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         text.textAlignment = .center
         return text
     }()
@@ -61,10 +61,10 @@ class ViewController: UIViewController {
     var timerLabel: UILabel = {
         let text = UILabel()
         text.isHidden = true
-        text.textColor = .black
+        text.textColor = UIColor(named: "DarkShadowText")
         text.textAlignment = .center
         text.text = "5"
-        text.font = .systemFont(ofSize: 32, weight: .bold)
+        text.font = .systemFont(ofSize: 40, weight: .bold)
         return text
     }()
     
@@ -85,10 +85,12 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        test.currentLevel = .one
+        test.currentLevel = .fithteen
         test.dipshit = {
             self.textBox.text = self.test.getGeneratedTextAsString()
             self.levelText.text = "Level \(self.test.currentLevel)"
+            self.setUpConstraint()
+            self.view.layoutIfNeeded()
         }
         
         setUpView()
@@ -99,11 +101,13 @@ class ViewController: UIViewController {
     }
     
     func setUpView() {
+        view.backgroundColor = UIColor(named: "BackgroundColor")
         view.addSubview(containerView)
         view.addSubview(timerLabel)
         view.addSubview(levelText)
         
-        containerView.addSubview(txtInput)
+        containerView.addSubview(textFieldView)
+        textFieldView.addSubview(txtInput)
         containerView.addSubview(button)
         containerView.addSubview(textBox)
     }
@@ -165,13 +169,14 @@ class ViewController: UIViewController {
         }
         
         levelText.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(16)
-            make.bottom.equalTo(containerView.snp.top).offset(-16)
+            make.top.equalTo(levelText.superview!.safeAreaLayoutGuide.snp.top).offset(32)
+            make.left.equalTo(levelText.superview!.safeAreaLayoutGuide.snp.left).offset(32)
         }
         
-        txtInput.snp.makeConstraints { make in
+        textFieldView.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(16)
             make.right.equalToSuperview().inset(16)
+            make.height.equalTo(35)
             make.centerY.equalToSuperview()
         }
         
@@ -193,7 +198,13 @@ class ViewController: UIViewController {
         timerLabel.snp.makeConstraints { make in
             make.left.equalToSuperview()
             make.right.equalToSuperview()
-            make.top.equalToSuperview().offset(100)
+            make.top.equalToSuperview().offset(200)
+        }
+        
+        txtInput.snp.makeConstraints { make in
+            make.top.bottom.equalToSuperview()
+            make.left.equalToSuperview().offset(10)
+            make.right.equalToSuperview().offset(-10)
         }
     }
 }
