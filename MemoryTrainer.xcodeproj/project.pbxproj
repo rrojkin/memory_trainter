@@ -18,6 +18,7 @@
 		44F1E6D22B238C2B001DC7EA /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 44F1E6D12B238C2B001DC7EA /* Lottie */; };
 		44F1E6D42B238CAB001DC7EA /* WordsClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F1E6D32B238CAB001DC7EA /* WordsClass.swift */; };
 		44F1E6D62B23C539001DC7EA /* GamePlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F1E6D52B23C539001DC7EA /* GamePlay.swift */; };
+		44F1E6D82B24A05B001DC7EA /* NeumorphDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F1E6D72B24A05B001DC7EA /* NeumorphDesign.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		44F1E6C52B238A24001DC7EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		44F1E6D32B238CAB001DC7EA /* WordsClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsClass.swift; sourceTree = "<group>"; };
 		44F1E6D52B23C539001DC7EA /* GamePlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePlay.swift; sourceTree = "<group>"; };
+		44F1E6D72B24A05B001DC7EA /* NeumorphDesign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphDesign.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 				44F1E6BB2B238A23001DC7EA /* ViewController.swift */,
 				44F1E6D52B23C539001DC7EA /* GamePlay.swift */,
 				44F1E6D32B238CAB001DC7EA /* WordsClass.swift */,
+				44F1E6D72B24A05B001DC7EA /* NeumorphDesign.swift */,
 				44F1E6BD2B238A23001DC7EA /* Main.storyboard */,
 				44F1E6C02B238A24001DC7EA /* Assets.xcassets */,
 				44F1E6C22B238A24001DC7EA /* LaunchScreen.storyboard */,
@@ -164,6 +167,7 @@
 				44F1E6BC2B238A23001DC7EA /* ViewController.swift in Sources */,
 				44F1E6B82B238A23001DC7EA /* AppDelegate.swift in Sources */,
 				44F1E6BA2B238A23001DC7EA /* SceneDelegate.swift in Sources */,
+				44F1E6D82B24A05B001DC7EA /* NeumorphDesign.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
